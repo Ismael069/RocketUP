@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RocketUp</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: url('ChatGPT Image Jul 19, 2025, 09_31_52 PM.png') no-repeat center center/cover;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Dark overlay to tone down the background */
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7); /* Adjust opacity for darkness */
+      z-index: -1;
+    }
+
+    /* --- NAVBAR --- */
+    nav {
+      position: absolute;
+      top: 20px;
+      right: 40px;
+      display: flex;
+      gap: 30px;
+      font-size: 1.1rem;
+      z-index: 10;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #fff;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #1e90ff;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: #1e90ff;
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* --- LOADER --- */
+    .loader-screen {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      gap: 20px;
+      z-index: 9999;
+      animation: fadeOut 0.5s ease forwards;
+      animation-delay: 2.5s; /* Loader lasts 2.5s */
+    }
+
+    .circle-loader {
+      width: 70px;
+      height: 70px;
+      border: 5px solid rgba(104, 147, 255, 0.2);
+      border-top: 5px solid #6893ff;
+      border-radius: 50%;
+      animation: spin 1s linear infinite, glow 1.5s ease-in-out infinite;
+      box-shadow: 0 0 15px #6893ff;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @keyframes glow {
+      0%, 100% { box-shadow: 0 0 15px #6893ff; }
+      50% { box-shadow: 0 0 35px #6893ff; }
+    }
+
+    .rocket {
+      font-size: 50px;
+      color: #6893ff;
+      animation: bounce 1.5s infinite;
+      filter: drop-shadow(0 0 10px #6893ff);
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes fadeOut {
+      to { opacity: 0; visibility: hidden; }
+    }
+
+    /* --- MAIN PAGE CONTENT --- */
+    img {
+      max-width: 180px;
+      margin-bottom: 20px;
+      animation: float 4s ease-in-out infinite;
+      z-index: 1;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      letter-spacing: 2px;
+      animation: slideIn 1.5s ease forwards;
+      z-index: 1;
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 40px;
+      max-width: 650px;
+      line-height: 1.7;
+      opacity: 0.85;
+      animation: fadeUp 2s ease forwards;
+      z-index: 1;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .btn {
+      text-decoration: none;
+      padding: 15px 45px;
+      background-color: transparent;
+      color: #fff;
+      border: 2px solid #fff;
+      font-size: 1.3rem;
+      border-radius: 50px;
+      transition: all 0.4s ease;
+      box-shadow: 0 0 15px transparent;
+      z-index: 1;
+    }
+
+    .btn:hover {
+      color: #1e90ff;
+      border-color: #1e90ff;
+      background-color: rgba(30, 144, 255, 0.1);
+      box-shadow: 0 0 25px #1e90ff;
+      transform: scale(1.05);
+    }
+  </style>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <!-- Loader -->
+  <div class="loader-screen">
+    <div class="circle-loader"></div>
+    <i class="fas fa-rocket rocket"></i>
+  </div>
+
+  <!-- Navbar -->
+  <nav>
+    <a href="about.html">About Us</a>
+    <a href="help.html">Help</a>
+  </nav>
+
+  <!-- Main Content -->
+  <img src="ChatGPT Image Jul 20, 2025, 03_28_34 PM.png" alt="RocketUp Logo">
+  <h1>Welcome to RocketUp</h1>
+  <p>
+    At RocketUp, we deliver perfection in <strong>web development, graphic design, and video editing</strong>.  
+    Your brand deserves to stand out — and we make it happen with precision and style.
+  </p>
+  <a href="hire.html" class="btn">Hire Us</a>
+</body>
+</html>
