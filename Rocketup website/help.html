@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Help - RocketUp</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: url('help-bg.jpg') no-repeat center center/cover;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+      position: relative;
+    }
+
+    /* Dim background */
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.75);
+      z-index: -1;
+    }
+
+    header {
+      margin-top: 20px;
+    }
+
+    header img {
+      max-width: 160px;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin: 30px 0 10px;
+      color: #1e90ff;
+      text-shadow: 0 0 15px #1e90ff;
+    }
+
+    .faq-section {
+      max-width: 800px;
+      margin: 40px auto;
+      text-align: left;
+      padding: 0 20px;
+    }
+
+    .faq-item {
+      margin-bottom: 20px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 10px;
+      padding: 15px 20px;
+      transition: all 0.3s ease;
+    }
+
+    .faq-item:hover {
+      box-shadow: 0 0 15px #1e90ff;
+      transform: translateY(-5px);
+    }
+
+    .faq-item h3 {
+      font-size: 1.3rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #fff;
+    }
+
+    .faq-item h3::after {
+      content: "+";
+      font-size: 1.5rem;
+      color: #1e90ff;
+      transition: transform 0.3s ease;
+    }
+
+    .faq-item.active h3::after {
+      content: "-";
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      line-height: 1.6;
+      transition: all 0.4s ease;
+      color: #ccc;
+      margin-top: 10px;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 300px;
+      opacity: 1;
+    }
+
+    .contact-section {
+      margin: 50px auto;
+      text-align: center;
+    }
+
+    .contact-section h2 {
+      color: #1e90ff;
+      margin-bottom: 15px;
+      text-shadow: 0 0 10px #1e90ff;
+    }
+
+    .contact-links a {
+      display: inline-block;
+      margin: 10px;
+      color: #fff;
+      font-size: 1.2rem;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .contact-links a:hover {
+      color: #1e90ff;
+      transform: scale(1.1);
+      text-shadow: 0 0 8px #1e90ff;
+    }
+
+    footer {
+      margin-top: 50px;
+      padding: 20px;
+      background: rgba(0,0,0,0.8);
+      text-align: center;
+      font-size: 0.9rem;
+      color: #aaa;
+      width: 100%;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+  </style>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <!-- Logo -->
+  <header>
+    <img src="ChatGPT Image Jul 20, 2025, 03_28_34 PM.png" alt="RocketUp Logo">
+  </header>
+
+  <h1>How Can We Help?</h1>
+
+  <!-- FAQ Section -->
+  <section class="faq-section">
+    <div class="faq-item">
+      <h3>How can I hire RocketUp? <span></span></h3>
+      <div class="faq-answer">
+        You can contact us directly via email at <strong>mugishaismael069@gmail.com/ akenila250@gmail.com</strong> or click the "Hire Us" button on our homepage.  
+        We respond within 24 hours!
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <h3>What services do you provide? <span></span></h3>
+      <div class="faq-answer">
+        We offer full services in <strong>web development, graphic design, video editing, and branding</strong>.  
+        We also provide ongoing support and consulting.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <h3>How can I get technical support? <span></span></h3>
+      <div class="faq-answer">
+        For urgent technical support, reach us via email or through our dedicated chat at <strong>support@rocketup.com</strong>.  
+        Our team is available 24/7.
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact-section">
+    <h2>Contact Us Directly</h2>
+    <div class="contact-links">
+      <a href="mailto:help@rocketup.com"><i class="fas fa-envelope"></i> Email</a>
+      <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+      <a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+      <a href="tel:+123456789"><i class="fas fa-phone"></i> Call</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 RocketUp. All Rights Reserved.
+  </footer>
+
+  <script>
+    // FAQ toggle script
+    document.querySelectorAll('.faq-item h3').forEach(header => {
+      header.addEventListener('click', () => {
+        header.parentElement.classList.toggle('active');
+      });
+    });
+  </script>
+</body>
+</html>
