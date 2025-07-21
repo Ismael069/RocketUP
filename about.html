@@ -23,7 +23,7 @@
       position: relative;
     }
 
-    /* Dark overlay to make background subtle */
+    /* Dark overlay */
     body::before {
       content: "";
       position: absolute;
@@ -66,6 +66,7 @@
       max-width: 1100px;
       margin: 50px auto;
       padding: 0 20px;
+      width: 100%;
     }
 
     .team-member {
@@ -133,17 +134,57 @@
       width: 100%;
       border-top: 1px solid rgba(255,255,255,0.1);
     }
+
+    /* RESPONSIVENESS */
+    @media (max-width: 768px) {
+      .company-description {
+        font-size: 1rem;
+        padding: 0 10px;
+      }
+
+      .team {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 20px;
+        padding: 0 10px;
+      }
+
+      .team-member img {
+        width: 100px;
+        height: 100px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header img {
+        max-width: 120px;
+      }
+
+      .company-description {
+        font-size: 0.95rem;
+      }
+
+      .team {
+        grid-template-columns: 1fr;
+      }
+
+      .team-member img {
+        width: 90px;
+        height: 90px;
+      }
+
+      .team-member h3 {
+        font-size: 1.1rem;
+      }
+    }
   </style>
-  <!-- Correct Font Awesome CDN -->
+  <!-- Font Awesome for social icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-  <!-- Logo -->
   <header>
     <img src="ChatGPT Image Jul 20, 2025, 03_28_34 PM.png" alt="RocketUp Logo">
   </header>
 
-  <!-- Company Description -->
   <section class="company-description">
     <h1>About RocketUp</h1>
     <p>
@@ -153,62 +194,53 @@
     </p>
   </section>
 
-  <!-- Team Section -->
   <section class="team">
-    <!-- CEO -->
     <div class="team-member">
       <img src="ceo.png" alt="CEO">
       <h3>Mugisha Ismael</h3>
       <p>Chief Executive Officer</p>
       <div class="social-links">
-        <a href="mailto:ceo@rocketup.com" title="Email"><i class="fas fa-envelope"></i></a>
-        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="mailto:ceo@rocketup.com"><i class="fas fa-envelope"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
       </div>
     </div>
-
-    <!-- COO -->
     <div class="team-member">
       <img src="coo.png" alt="COO">
       <h3>Neza Enzo</h3>
       <p>Chief Operating Officer</p>
       <div class="social-links">
-        <a href="mailto:coo@rocketup.com" title="Email"><i class="fas fa-envelope"></i></a>
-        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="mailto:coo@rocketup.com"><i class="fas fa-envelope"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
       </div>
     </div>
-
-    <!-- CTO -->
     <div class="team-member">
       <img src="cto.jpg" alt="CTO">
       <h3>Mary Johnson</h3>
       <p>Chief Technology Officer</p>
       <div class="social-links">
-        <a href="mailto:cto@rocketup.com" title="Email"><i class="fas fa-envelope"></i></a>
-        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="mailto:cto@rocketup.com"><i class="fas fa-envelope"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
       </div>
     </div>
-
-    <!-- CFO -->
     <div class="team-member">
       <img src="cfo.jpg" alt="CFO">
       <h3>James Brown</h3>
       <p>Chief Financial Officer</p>
       <div class="social-links">
-        <a href="mailto:cfo@rocketup.com" title="Email"><i class="fas fa-envelope"></i></a>
-        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="mailto:cfo@rocketup.com"><i class="fas fa-envelope"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
   <footer>
     © 2025 RocketUp. All Rights Reserved.
   </footer>

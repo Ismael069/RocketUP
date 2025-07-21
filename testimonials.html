@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RocketUp Testimonials</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: #000;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 50px 20px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      color: #1e90ff;
+    }
+
+    /* Form styling */
+    form {
+      background: #111;
+      padding: 20px;
+      border-radius: 10px;
+      width: 100%;
+      max-width: 500px;
+      margin-bottom: 40px;
+      box-shadow: 0 0 15px rgba(104, 147, 255, 0.3);
+    }
+
+    form input, form textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
+      background: #222;
+      color: #fff;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    form button {
+      padding: 12px 30px;
+      background: transparent;
+      border: 2px solid #fff;
+      color: #fff;
+      border-radius: 50px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: all 0.4s ease;
+    }
+    form button:hover {
+      color: #1e90ff;
+      border-color: #1e90ff;
+      background-color: rgba(30,144,255,0.1);
+      box-shadow: 0 0 15px #1e90ff;
+    }
+
+    /* Testimonials List */
+    #testimonialsList {
+      max-width: 700px;
+      width: 100%;
+      margin-top: 20px;
+      text-align: left;
+    }
+    .testimonial {
+      background: #111;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-left: 4px solid #1e90ff;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(104,147,255,0.2);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 15px;
+      flex-wrap: wrap;
+      word-wrap: break-word;
+    }
+    .testimonial-content {
+      flex: 1;
+    }
+    .testimonial h3 {
+      margin-bottom: 5px;
+      color: #1e90ff;
+    }
+    .testimonial p {
+      opacity: 0.85;
+      line-height: 1.5;
+    }
+
+    /* Delete Button */
+    .delete-btn {
+      background: transparent;
+      border: 2px solid #ff4d4d;
+      color: #ff4d4d;
+      border-radius: 25px;
+      padding: 5px 15px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+    .delete-btn:hover {
+      background: #ff4d4d;
+      color: #fff;
+      box-shadow: 0 0 10px #ff4d4d;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: auto;
+      background: #000;
+      padding: 20px;
+      text-align: center;
+      font-size: 0.9rem;
+      opacity: 0.7;
+      width: 100%;
+    }
+    footer span { color: #1e90ff; }
+
+    /* Responsive Adjustments */
+    @media (max-width: 600px) {
+      h1 { font-size: 2rem; }
+      form button { font-size: 1rem; }
+      .testimonial { font-size: 0.95rem; }
+      .delete-btn { padding: 4px 12px; font-size: 0.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>What Our Clients Say</h1>
+
+  <!-- Testimonial Form -->
+  <form id="testimonialForm">
+    <input type="text" id="name" placeholder="Your Name" required>
+    <textarea id="testimonial" rows="4" placeholder="Your Testimonial" required></textarea>
+    <button type="submit">Submit</button>
+  </form>
+
+  <!-- Testimonials List -->
+  <div id="testimonialsList"></div>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 <span>RocketUp</span> — It's all about perfection.
+  </footer>
+
+  <script>
+    const form = document.getElementById('testimonialForm');
+    const list = document.getElementById('testimonialsList');
+
+    // Load saved testimonials from localStorage
+    let savedTestimonials = JSON.parse(localStorage.getItem('testimonials')) || [];
+    savedTestimonials.forEach((t, index) => addTestimonialToDOM(t, index));
+
+    // Add new testimonial on submit
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const text = document.getElementById('testimonial').value.trim();
+
+      if (!name || !text) return;
+
+      const newTestimonial = { name, text };
+      savedTestimonials.unshift(newTestimonial);
+      localStorage.setItem('testimonials', JSON.stringify(savedTestimonials));
+
+      addTestimonialToDOM(newTestimonial, 0, true);
+      form.reset();
+    });
+
+    function addTestimonialToDOM(testimonial, index, prepend = false) {
+      const div = document.createElement('div');
+      div.classList.add('testimonial');
+      div.innerHTML = `
+        <div class="testimonial-content">
+          <h3>${testimonial.name}</h3>
+          <p>${testimonial.text}</p>
+        </div>
+        <button class="delete-btn" onclick="deleteTestimonial(${index})">Delete</button>
+      `;
+
+      if (prepend) {
+        list.prepend(div);
+      } else {
+        list.appendChild(div);
+      }
+    }
+
+    function deleteTestimonial(index) {
+      // Remove from array
+      savedTestimonials.splice(index, 1);
+      localStorage.setItem('testimonials', JSON.stringify(savedTestimonials));
+
+      // Refresh display
+      list.innerHTML = "";
+      savedTestimonials.forEach((t, i) => addTestimonialToDOM(t, i));
+    }
+  </script>
+
+</body>
+</html>
